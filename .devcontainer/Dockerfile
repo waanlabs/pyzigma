@@ -27,6 +27,7 @@ RUN apt-get update && \
 
 # Install common tools.
 RUN apt-get install -y software-properties-common \
+    build-essential \
     git \
     curl
 
@@ -49,6 +50,9 @@ RUN groupadd -g ${GID} ${USER} && \
 
 # Switch to new sudo user.
 USER ${USER}
+
+# Install Rust.
+RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 
 # Set path for Python and pip.
 ENV PATH="/home/${USER}/.local/bin:${PATH}"

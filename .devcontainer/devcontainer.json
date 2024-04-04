@@ -53,7 +53,11 @@
                 "mgesbert.python-path",
                 "ms-python.flake8",
                 "slightc.pip-manager",
-                "ms-python.pylint"
+                "ms-python.pylint",
+                "serayuzgur.crates",
+                "rust-lang.rust-analyzer",
+                "foxundermoon.shell-format",
+                "dustypomerleau.rust-syntax"
             ]
         }
     }
