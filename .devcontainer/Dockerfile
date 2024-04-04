@@ -9,7 +9,7 @@ LABEL upstream="https://github.com/waanlabs/pyzigma"
 LABEL version="1.0.0"
 LABEL license="MIT"
 
-# User settings
+# Custom settings
 ARG USER=waan
 ARG UID=1000
 ARG GID=1000
