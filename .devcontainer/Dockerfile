@@ -1,5 +1,5 @@
 # Use Ubuntu latest as the base image.
-FROM ubuntu:22.04
+FROM ubuntu:24.04
 
 # Dockblock.
 LABEL maintainer="waan<admin@waan.email>"
@@ -11,8 +11,8 @@ LABEL license="MIT"
 
 # Custom settings.
 ARG USER=waan
-ARG UID=1000
-ARG GID=1000
+ARG UID=5000
+ARG GID=5000
 ARG PROJECT=pyzigma
 
 # Set non-interactive to avoid prompts during build.
@@ -20,7 +20,6 @@ ENV DEBIAN_FRONTEND=noninteractive
 
 # Set the timezone to EST (Eastern Standard Time).
 ENV TZ=EST
-
 
 # Update package lists and install sudo.
 RUN apt-get update && \ 
@@ -51,15 +50,11 @@ RUN apt-get update && \
 # Using useradd with explicit user/group IDs for consistency.
 RUN groupadd -g ${GID} ${USER} && \
     useradd -m -s /bin/bash -u ${UID} -g ${GID} ${USER} && \
-    echo "${USER} ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/${USER} && \
+    echo "${USER} ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/${USER} && \
     chmod 0440 /etc/sudoers.d/${USER}
 
 # Switch to new sudo user.
 USER ${USER}
-
-# Install pipenv & poetry as non-root user.
-RUN pip install --upgrade pip && \
-    pip install pipenv poetry
 
 # Install Rust.
 RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
