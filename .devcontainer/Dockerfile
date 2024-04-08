@@ -5,7 +5,7 @@ FROM ubuntu:24.04
 LABEL maintainer="waan<admin@waan.email>"
 LABEL description="Ubuntu Dev Container"
 LABEL website="https://waan.io"
-LABEL upstream="https://github.com/waanlabs/pyzigma"
+LABEL origin="https://github.com/waanlabs/pyzigma"
 LABEL version="1.0.0"
 LABEL license="MIT"
 
