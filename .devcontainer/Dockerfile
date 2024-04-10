@@ -59,9 +59,6 @@ USER ${USER}
 # Install Rust.
 RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 
-# Set path for Python and pip.
-ENV PATH="/home/${USER}/.local/bin:${PATH}"
-
 # Set the working directory.
 WORKDIR /home/${USER}/${PROJECT}
 
